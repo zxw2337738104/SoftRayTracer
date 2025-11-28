@@ -212,8 +212,9 @@ Vector3f Material::eval(const Vector3f &wi, const Vector3f &wo, const Vector3f &
 			float cosbeta = dotProduct(wi, N);
             if (cosalpha > 0.f && cosbeta > 0.f) {
                 float F, G, D;
+                Vector3f wh = ((wi + wo) / 2).normalized();
                 fresnel(-wi, N, ior, F);
-                float Roughness = 0.95;//超参数，控制粗糙度
+                float Roughness = 0.3;//超参数，控制粗糙度
 
                 //采用Schlick-GGX计算几何函数G
                 float k = pow((Roughness + 1), 2) / 8;
@@ -225,7 +226,7 @@ Vector3f Material::eval(const Vector3f &wi, const Vector3f &wo, const Vector3f &
                 G = G_function(wi, N) * G_function(wo, N);
 
                 float alpha = pow(Roughness, 2);
-                Vector3f wh = ((wi + wo) / 2).normalized();
+                //float alpha = Roughness;
                 auto D_function = [&](const Vector3f& wh, const Vector3f& N)
                     {
                         float NdotH = dotProduct(N, wh);

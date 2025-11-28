@@ -32,7 +32,7 @@ int main(int argc, char** argv)
     microfacet->Kd = Vector3f(0.3, 0.3, 0.25);
     microfacet->ior = 12.85;
     Sphere sphere1(Vector3f(150, 100, 200), 100, microfacet);
-    scene.Add(&sphere1);
+    //scene.Add(&sphere1);
 
     //Mirror²ÄÖÊ
     Material* mirror = new Material(MIRROR, Vector3f(0.f));
@@ -44,14 +44,14 @@ int main(int argc, char** argv)
 
     MeshTriangle floor("../../../models/cornellbox/floor.obj", white);
     MeshTriangle shortbox("../../../models/cornellbox/shortbox.obj", white);
-    MeshTriangle tallbox("../../../models/cornellbox/tallbox.obj", mirror);
+    MeshTriangle tallbox("../../../models/cornellbox/tallbox.obj", white);
     MeshTriangle left("../../../models/cornellbox/left.obj", red);
     MeshTriangle right("../../../models/cornellbox/right.obj", green);
     MeshTriangle light_("../../../models/cornellbox/light.obj", light);
 
     scene.Add(&floor);
-    //scene.Add(&shortbox);
-    //scene.Add(&tallbox);
+    scene.Add(&shortbox);
+    scene.Add(&tallbox);
     scene.Add(&left);
     scene.Add(&right);
     scene.Add(&light_);

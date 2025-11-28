@@ -57,7 +57,7 @@ public:
         if (!solveQuadratic(a, b, c, t0, t1)) return result;
         if (t0 < 0) t0 = t1;
         if (t0 < 0) return result;
-        if (t0 > 0.5) {
+        if (t0 > 0.1) {
             result.happened = true;
 
             result.coords = Vector3f(ray.origin + ray.direction * t0);
